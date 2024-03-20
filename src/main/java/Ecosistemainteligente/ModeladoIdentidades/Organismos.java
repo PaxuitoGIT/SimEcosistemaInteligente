@@ -101,4 +101,14 @@ public class Organismos {
     public void setPoblacion(int poblacion) {
         this.poblacion = poblacion;
     }
+
+    public void aumentarPoblacion() {
+        this.poblacion++;
+    }
+
+    public void disminuirPoblacion() {
+        if (this.poblacion > 0) {
+            this.poblacion--;
+        }
+    }
 }
