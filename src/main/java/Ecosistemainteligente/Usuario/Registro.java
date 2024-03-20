@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Registro {
-    private List<String> registros;
+    private final List<String> registros;
 
     public Registro() {
         this.registros = new ArrayList<>();

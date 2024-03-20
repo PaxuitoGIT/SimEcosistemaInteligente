@@ -54,7 +54,9 @@ public class App {
 
         int opcion = 0;
 
-        while (opcion != 4) {
+        while (opcion != 7) {
+            try {
+            System.out.println();
             System.out.println("1. Simular interacción");
             System.out.println("2. Simular competencia por recursos");
             System.out.println("3. Simular eventos");
@@ -63,7 +65,9 @@ public class App {
             System.out.println("6. Mostrar datos de organismos y ambiente");
             System.out.println("7. Salir");
             System.out.print("Seleccione una opción: ");
+            System.out.println();
             opcion = scanner.nextInt();
+            System.out.println();
 
             switch (opcion) {
                 case 1:
@@ -82,6 +86,7 @@ public class App {
                     switch (opcionDepredacion) {
                         case 1:
                             // León depreda al conejo
+                            System.out.println();
                             System.out.println("Antes de la depredación, la salud del conejo es: " + herbivoro.getSalud());
                             carnivoro.predar(herbivoro);
                             System.out.println("Después de la depredación, la salud del conejo es: " + herbivoro.getSalud());
@@ -89,6 +94,7 @@ public class App {
                             break;
                         case 2:
                             // Conejo come la planta
+                            System.out.println();
                             System.out.println("Antes de la depredación, la salud de la planta es: " + planta.getSalud());
                             herbivoro.comerPlanta(planta);
                             System.out.println("Después de la depredación, la salud de la planta es: " + planta.getSalud());
@@ -96,12 +102,14 @@ public class App {
                             break;
                         case 3:
                             // Planta poliniza al ambiente
+                            System.out.println();
                             System.out.println("Antes de la polinización, los recursos disponibles son: " + ambiente.getRecursosDisponibles());
                             planta.polinizar(ambiente);
                             System.out.println("Después de la polinización, los recursos disponibles son: " + ambiente.getRecursosDisponibles());
                             registro.agregarRegistro("El usuario " + nombreUsuario + " ha polinizado el ambiente");
                             break;
                         case 4:
+                            System.out.println();
                             System.out.println("Saliendo del submenú de depredación...");
                             registro.agregarRegistro("El usuario " + nombreUsuario + " ha salido del submenú de depredación");
                             break;
@@ -132,6 +140,7 @@ public class App {
                         switch (opcionSimulacion) {
                             case 1:
                                 // Crecer población
+                                System.out.println();
                                 carnivoro.crecer();
                                 herbivoro.crecer();
                                 System.out.println("Salud media de los organismos: " + ambiente.calcularSaludMedia());
@@ -141,6 +150,7 @@ public class App {
                                 break;
                             case 2:
                                 // Reproducir población
+                                System.out.println();
                                 carnivoro.reproducir();
                                 herbivoro.reproducir();
                                 System.out.println("Salud media de los organismos: " + ambiente.calcularSaludMedia());
@@ -150,6 +160,7 @@ public class App {
                                 break;
                             case 3:
                                 // Evento aleatorio
+                                System.out.println();
                                 carnivoro.eventoAleatorio();
                                 herbivoro.eventoAleatorio();
                                 System.out.println("Salud media de los organismos: " + ambiente.calcularSaludMedia());
@@ -158,6 +169,7 @@ public class App {
                                 registro.agregarRegistro("El usuario " + nombreUsuario + " ha simulado un evento aleatorio");
                                 break;
                             case 4:
+                                System.out.println();
                                 System.out.println("Saliendo del submenú de simulación...");
                                 registro.agregarRegistro("El usuario " + nombreUsuario + " ha salido del submenú de simulación");
                                 break;
@@ -206,6 +218,11 @@ public class App {
                     System.out.println("Opción no válida. Por favor, seleccione una opción entre 1 y 4.");
                     break;
             }
+        }
+        catch (Exception e) {
+            System.out.println("Opción no válida.");
+            scanner.next();
+        }
         }
 
         System.out.println("Se ha creado un registro en la carpeta logs");
