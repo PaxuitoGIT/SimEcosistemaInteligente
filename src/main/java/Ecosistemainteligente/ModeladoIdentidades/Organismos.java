@@ -9,6 +9,7 @@ public class Organismos {
     protected String nombre;
     protected boolean estaVivo;
     protected boolean esDepredador;
+    protected int poblacion;
 
     public Organismos(int posicionX, int posicionY, int edad, int salud, boolean esReproductivo, String nombre, boolean estaVivo, boolean esDepredador) {
         this.posicionX = posicionX;
@@ -93,4 +94,11 @@ public class Organismos {
             this.esDepredador = esDepredador;
     }
 
+    public int getPoblacion() {
+        return poblacion;
+    }
+
+    public void setPoblacion(int poblacion) {
+        this.poblacion = poblacion;
+    }
 }

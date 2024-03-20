@@ -2,17 +2,26 @@ package Ecosistemainteligente;
 
 import Ecosistemainteligente.ModeladoIdentidades.Ambiente;
 import Ecosistemainteligente.ModeladoIdentidades.Animal;
+import Ecosistemainteligente.ModeladoIdentidades.Organismos;
 import Ecosistemainteligente.ModeladoIdentidades.Planta;
 
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 
 public class App {
     public static void main( String[] args ) {
-        // Crear instancias de Ambiente, Animal y Planta
-        Ambiente ambiente = new Ambiente("Tropical", "Bosque", 100);
+        // Crear instancias de Animal y Planta
         Animal carnivoro = new Animal(0, 0, 5, 100, true, "León", true, true, "Felino", true);
         Animal herbivoro = new Animal(1, 1, 3, 80, true, "Conejo", true, false, "Lagomorfo", false);
         Planta planta = new Planta(2, 2, 1, 50, true, "Arbol", true, false, "Roble");
+
+        // Crear instancia de Ambiente
+        List<Organismos> organismos = new ArrayList<>();
+        organismos.add(carnivoro);
+        organismos.add(herbivoro);
+        organismos.add(planta);
+        Ambiente ambiente = new Ambiente("Tropical", "Selva", 100, organismos);
 
         Scanner scanner = new Scanner(System.in);
         int opcion = 0;
@@ -20,7 +29,7 @@ public class App {
         while (opcion != 4) {
             System.out.println("1. Simular interacción");
             System.out.println("2. Simular competencia por recursos");
-            System.out.println("3. Simular polinización");
+            System.out.println("3. Simular eventos");
             System.out.println("4. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
@@ -73,6 +82,50 @@ public class App {
                     System.out.println("Después de la competencia por recursos, los recursos disponibles son: " + ambiente.getRecursosDisponibles());
                     break;
                 case 3:
+                    int opcionSimulacion = 0;
+
+                    while (opcionSimulacion != 4) {
+                        System.out.println("3.1. Crecer población");
+                        System.out.println("3.2. Reproducir población");
+                        System.out.println("3.3. Evento aleatorio");
+                        System.out.println("3.4. Salir");
+                        System.out.print("Seleccione una opción: ");
+                        opcionSimulacion = scanner.nextInt();
+
+                        switch (opcionSimulacion) {
+                            case 1:
+                                // Crecer población
+                                carnivoro.crecer();
+                                herbivoro.crecer();
+                                System.out.println("Salud media de los organismos: " + ambiente.calcularSaludMedia());
+                                System.out.println("Población total: " + ambiente.calcularPoblacionTotal());
+                                System.out.println("Recursos disponibles: " + ambiente.getRecursosDisponibles());
+                                break;
+                            case 2:
+                                // Reproducir población
+                                carnivoro.reproducir();
+                                herbivoro.reproducir();
+                                System.out.println("Salud media de los organismos: " + ambiente.calcularSaludMedia());
+                                System.out.println("Población total: " + ambiente.calcularPoblacionTotal());
+                                System.out.println("Recursos disponibles: " + ambiente.getRecursosDisponibles());
+                                break;
+                            case 3:
+                                // Evento aleatorio
+                                carnivoro.eventoAleatorio();
+                                herbivoro.eventoAleatorio();
+                                System.out.println("Salud media de los organismos: " + ambiente.calcularSaludMedia());
+                                System.out.println("Población total: " + ambiente.calcularPoblacionTotal());
+                                System.out.println("Recursos disponibles: " + ambiente.getRecursosDisponibles());
+                                break;
+                            case 4:
+                                System.out.println("Saliendo del submenú de simulación...");
+                                break;
+                            default:
+                                System.out.println("Opción no válida. Por favor, seleccione una opción entre 3.1 y 3.4.");
+                                break;
+                        }
+                    }
+                    break;
                 case 4:
                     System.out.println("Saliendo del programa...");
                     break;

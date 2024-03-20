@@ -1,5 +1,7 @@
 package Ecosistemainteligente.ModeladoIdentidades;
 
+import java.util.Random;
+
 public class Animal extends Organismos {
     private String especies;
     private boolean isPredator;
@@ -45,6 +47,34 @@ public class Animal extends Organismos {
        int recursosActuales = ambiente.getRecursosDisponibles();
        if (recursosActuales > 0) {
            ambiente.setRecursosDisponibles(recursosActuales - 10); // Asume que 10 es la cantidad de recursos que se consumen
+        }
+    }
+
+    public void crecer() {
+        this.setSalud(this.getSalud() + 10); // Asume que 10 es la cantidad de salud que se añade al animal
+    }
+
+    public void reproducir() {
+        this.setPoblacion(this.getPoblacion() + 1); // Asume que 1 es la cantidad de hijos que se añaden al animal
+    }
+
+    public void eventoAleatorio() {
+        Random random = new Random();
+        int evento = random.nextInt(3);
+
+        switch (evento) {
+            case 0:
+                // Desastre natural
+                this.setSalud(this.getSalud() - 20); // Asume que 20 es la cantidad de salud que el animal pierde en un desastre natural
+                break;
+            case 1:
+                // Enfermedad
+                this.setSalud(this.getSalud() - 10); // Asume que 10 es la cantidad de salud que el animal pierde por una enfermedad
+                break;
+            case 2:
+                // Cambio climático
+                this.setSalud(this.getSalud() - 15); // Asume que 15 es la cantidad de salud que el animal pierde por un cambio climático
+                break;
         }
     }
 }
