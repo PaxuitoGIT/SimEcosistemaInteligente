@@ -19,7 +19,7 @@ public class App {
 
         while (opcion != 4) {
             System.out.println("1. Simular interacción");
-            System.out.println("2. Simular herbivoría");
+            System.out.println("2. Simular competencia por recursos");
             System.out.println("3. Simular polinización");
             System.out.println("4. Salir");
             System.out.print("Seleccione una opción: ");
@@ -67,6 +67,11 @@ public class App {
                     }
                     break;
                 case 2:
+                    System.out.println("Antes de la competencia por recursos, los recursos disponibles son: " + ambiente.getRecursosDisponibles());
+                    carnivoro.competirRecursos(ambiente);
+                    herbivoro.competirRecursos(ambiente);
+                    System.out.println("Después de la competencia por recursos, los recursos disponibles son: " + ambiente.getRecursosDisponibles());
+                    break;
                 case 3:
                 case 4:
                     System.out.println("Saliendo del programa...");

@@ -40,4 +40,11 @@ public class Animal extends Organismos {
             planta.setEstaVivo(false);
         }
     }
+
+    public void competirRecursos(Ambiente ambiente) {
+       int recursosActuales = ambiente.getRecursosDisponibles();
+       if (recursosActuales > 0) {
+           ambiente.setRecursosDisponibles(recursosActuales - 10); // Asume que 10 es la cantidad de recursos que se consumen
+        }
+    }
 }
