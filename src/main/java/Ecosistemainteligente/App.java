@@ -4,6 +4,8 @@ import Ecosistemainteligente.ModeladoIdentidades.Ambiente;
 import Ecosistemainteligente.ModeladoIdentidades.Animal;
 import Ecosistemainteligente.ModeladoIdentidades.Organismos;
 import Ecosistemainteligente.ModeladoIdentidades.Planta;
+import Ecosistemainteligente.Usuario.GestorUsuario;
+import Ecosistemainteligente.Usuario.Usuario;
 
 import java.util.Scanner;
 import java.util.List;
@@ -11,6 +13,24 @@ import java.util.ArrayList;
 
 public class App {
     public static void main( String[] args ) {
+        GestorUsuario gestorUsuario = new GestorUsuario();
+
+        Usuario usuario1 = new Usuario("user", "admin");
+        gestorUsuario.registrarUsuario(usuario1);
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese su nombre de usuario: ");
+        String nombreUsuario = scanner.nextLine();
+        System.out.println("Ingrese su contraseña: ");
+        String contrasena = scanner.nextLine();
+
+        if (gestorUsuario.autenticarUsuario(nombreUsuario, contrasena)) {
+            System.out.println("Bienvenido al ecosistema inteligente");
+        } else {
+            System.out.println("Usuario o contraseña incorrectos");
+            return;
+        }
+
         // Crear instancias de Animal y Planta
         Animal carnivoro = new Animal(0, 0, 5, 100, true, "León", true, true, "Felino", true);
         Animal herbivoro = new Animal(1, 1, 3, 80, true, "Conejo", true, false, "Lagomorfo", false);
@@ -23,7 +43,6 @@ public class App {
         organismos.add(planta);
         Ambiente ambiente = new Ambiente("Tropical", "Selva", 100, organismos);
 
-        Scanner scanner = new Scanner(System.in);
         int opcion = 0;
 
         while (opcion != 4) {
@@ -85,9 +104,9 @@ public class App {
                     int opcionSimulacion = 0;
 
                     while (opcionSimulacion != 4) {
-                        System.out.println("3.1. Crecer población");
-                        System.out.println("3.2. Reproducir población");
-                        System.out.println("3.3. Evento aleatorio");
+                        System.out.println("3.1. Crecer población (Aumentar salud)");
+                        System.out.println("3.2. Reproducir población (Aumentar población)");
+                        System.out.println("3.3. Evento aleatorio (Desastre natural, enfermedad, etc.)");
                         System.out.println("3.4. Salir");
                         System.out.print("Seleccione una opción: ");
                         opcionSimulacion = scanner.nextInt();
