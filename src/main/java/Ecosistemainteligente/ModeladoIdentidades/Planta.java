@@ -20,4 +20,20 @@ public class Planta extends Organismos {
             ambiente.setRecursosDisponibles(ambiente.getRecursosDisponibles() + 10); // Asume que 10 es la cantidad de recursos que se añaden al ambiente
         }
     }
+
+    @Override
+    public String toString() {
+        return "Planta{" +
+                "tipoPlanta='" + tipoPlanta + '\'' +
+                ", posicionX=" + posicionX +
+                ", posicionY=" + posicionY +
+                ", edad=" + edad +
+                ", salud=" + salud +
+                ", esReproductivo=" + esReproductivo +
+                ", nombre='" + nombre + '\'' +
+                ", estaVivo=" + estaVivo +
+                ", esDepredador=" + esDepredador +
+                ", poblacion=" + poblacion +
+                '}';
+    }
 }

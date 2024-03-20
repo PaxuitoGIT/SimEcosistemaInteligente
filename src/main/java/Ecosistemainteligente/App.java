@@ -60,7 +60,8 @@ public class App {
             System.out.println("3. Simular eventos");
             System.out.println("4. Optimizar ambiente");
             System.out.println("5. Crear modelo personalizado");
-            System.out.println("6. Salir");
+            System.out.println("6. Mostrar datos de organismos y ambiente");
+            System.out.println("7. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
 
@@ -191,6 +192,12 @@ public class App {
                 case 6:
                     System.out.println(carnivoro.toString());
                     System.out.println(herbivoro.toString());
+                    System.out.println(planta.toString());
+                    System.out.println(ambiente.toString());
+
+                    registro.agregarRegistro("El usuario " + nombreUsuario + " ha mostrado los datos de los organismos y el ambiente");
+                    break;
+
                 case 7:
                     System.out.println("Saliendo del programa...");
                     registro.agregarRegistro("El usuario " + nombreUsuario + " ha salido del programa");

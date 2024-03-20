@@ -58,4 +58,13 @@ public class Ambiente {
     public void setRecursosDisponibles(int recursosDisponibles) {
         this.recursosDisponibles = recursosDisponibles;
     }
+
+    @Override
+    public String toString() {
+        return "Ambiente{" +
+                "clima='" + clima + '\'' +
+                ", terreno='" + terreno + '\'' +
+                ", recursosDisponibles=" + recursosDisponibles +
+                '}';
+    }
 }
