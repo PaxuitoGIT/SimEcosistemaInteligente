@@ -15,4 +15,9 @@ public class Planta extends Organismos {
     public void setPlantType(String plantType) {
         this.tipoPlanta = plantType;
     }
+    public void polinizar(Ambiente ambiente) {
+        if (this.esReproductivo) {
+            ambiente.setRecursosDisponibles(ambiente.getRecursosDisponibles() + 10); // Asume que 10 es la cantidad de recursos que se añaden al ambiente
+        }
+    }
 }

@@ -25,4 +25,19 @@ public class Animal extends Organismos {
     public void setPredator(boolean isPredator) {
         this.isPredator = isPredator;
     }
+    public void predar(Organismos presa) {
+        if (this.esDepredador) {
+            presa.setSalud(presa.getSalud() - 10); // Asume que 10 es el daño que hace el depredador
+            if (presa.getSalud() <= 0) {
+                presa.setEstaVivo(false);
+            }
+        }
+    }
+
+    public void comerPlanta(Planta planta) {
+        planta.setSalud(planta.getSalud() - 10); // Asume que 10 es el daño que hace el herbívoro
+        if (planta.getSalud() <= 0) {
+            planta.setEstaVivo(false);
+        }
+    }
 }
