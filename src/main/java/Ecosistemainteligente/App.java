@@ -28,11 +28,15 @@ public class App {
             switch (opcion) {
                 case 1:
                     // Submenú para la depredación
-                    System.out.println("1.1. León depreda al conejo");
-                    System.out.println("1.2. Conejo come la planta");
-                    System.out.println("1.3. Planta poliniza al ambiente");
-                    System.out.print("Seleccione una opción de depredación: ");
-                    int opcionDepredacion = scanner.nextInt();
+                    int opcionDepredacion = 0;
+
+                    while (opcionDepredacion != 4) {
+                        System.out.println("1. León depreda al conejo");
+                        System.out.println("2. Conejo come la planta");
+                        System.out.println("3. Planta poliniza al ambiente");
+                        System.out.println("4. Salir");
+                        System.out.print("Seleccione una opción: ");
+                        opcionDepredacion = scanner.nextInt();
 
                     switch (opcionDepredacion) {
                         case 1:
@@ -53,9 +57,13 @@ public class App {
                             planta.polinizar(ambiente);
                             System.out.println("Después de la polinización, los recursos disponibles son: " + ambiente.getRecursosDisponibles());
                             break;
+                        case 4:
+                            System.out.println("Saliendo del submenú de depredación...");
+                            break;
                         default:
                             System.out.println("Opción no válida. Por favor, seleccione una opción entre 1.1 y 1.3.");
                             break;
+                    }
                     }
                     break;
                 case 2:
