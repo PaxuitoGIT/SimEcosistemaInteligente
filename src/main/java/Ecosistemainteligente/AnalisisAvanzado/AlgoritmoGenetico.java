@@ -3,6 +3,7 @@ package Ecosistemainteligente.AnalisisAvanzado;
 import Ecosistemainteligente.ModeladoIdentidades.Ambiente;
 import Ecosistemainteligente.ModeladoIdentidades.Organismos;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -14,12 +15,12 @@ public class AlgoritmoGenetico implements Optimizador {
 
         // 1. Inicializar una población
         // Puedes representar una solución (un individuo de la población) como un array de booleanos
-        boolean[][] poblacion = inicializarPoblacion(100, ambiente.getOrganismos().size());
-
+        boolean[][] poblacion = inicializarPoblacion(ambiente.getOrganismos().size());
+        System.out.println("Población inicial: " + Arrays.deepToString(poblacion));
         // 2. Evaluar la población
         int[] fitness = evaluarPoblacion(poblacion, ambiente);
 
-        for (int generacion = 0; generacion < 1000; generacion++) {
+        for (int generacion = 0; generacion < 2; generacion++) {
             // 3. Seleccionar padres para el cruce
             boolean[][] padres = seleccionarPadres(poblacion, fitness);
 
@@ -35,18 +36,22 @@ public class AlgoritmoGenetico implements Optimizador {
 
             // 7. Seleccionar la próxima generación
             poblacion = seleccionarProximaGeneracion(nuevaPoblacion, fitness);
+
+            System.out.println("Población después de la generación " + (generacion + 1) + ": " + Arrays.deepToString(poblacion));
         }
 
         // Al final del algoritmo, puedes obtener la mejor solución de la última población
         boolean[] mejorSolucion = obtenerMejorSolucion(poblacion, fitness);
+        System.out.println("Mejor solución: " + Arrays.toString(mejorSolucion));
+
 
         // Aplicar la mejor solución al ambiente
         aplicarSolucion(mejorSolucion, ambiente);
     }
 
-    private boolean[][] inicializarPoblacion(int tamanoPoblacion, int tamanoSolucion) {
-        boolean[][] poblacion = new boolean[tamanoPoblacion][tamanoSolucion];
-        for (int i = 0; i < tamanoPoblacion; i++) {
+    private boolean[][] inicializarPoblacion(int tamanoSolucion) {
+        boolean[][] poblacion = new boolean[4][tamanoSolucion];
+        for (int i = 0; i < 4; i++) {
             for (int j = 0; j < tamanoSolucion; j++) {
                 poblacion[i][j] = random.nextBoolean();
             }

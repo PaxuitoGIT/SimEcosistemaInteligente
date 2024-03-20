@@ -1,5 +1,6 @@
 package Ecosistemainteligente;
 
+import Ecosistemainteligente.AnalisisAvanzado.AlgoritmoGenetico;
 import Ecosistemainteligente.ModeladoIdentidades.Ambiente;
 import Ecosistemainteligente.ModeladoIdentidades.Animal;
 import Ecosistemainteligente.ModeladoIdentidades.Organismos;
@@ -34,6 +35,8 @@ public class App {
 
         Registro registro = new Registro();
 
+        AlgoritmoGenetico optimizador = new AlgoritmoGenetico();
+
         // Crear instancias de Animal y Planta
         Animal carnivoro = new Animal(0, 0, 5, 100, true, "León", true, true, "Felino", true);
         Animal herbivoro = new Animal(1, 1, 3, 80, true, "Conejo", true, false, "Lagomorfo", false);
@@ -52,7 +55,8 @@ public class App {
             System.out.println("1. Simular interacción");
             System.out.println("2. Simular competencia por recursos");
             System.out.println("3. Simular eventos");
-            System.out.println("4. Salir");
+            System.out.println("4. Optimizar ambiente");
+            System.out.println("5. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
 
@@ -161,6 +165,11 @@ public class App {
 
                     break;
                 case 4:
+                    optimizador.optimizar(ambiente);
+                    System.out.println("Se ha optimizado el ambiente");
+                    registro.agregarRegistro("El usuario " + nombreUsuario + " ha optimizado el ambiente");
+                    break;
+                case 5:
                     System.out.println("Saliendo del programa...");
                     registro.agregarRegistro("El usuario " + nombreUsuario + " ha salido del programa");
                     break;
