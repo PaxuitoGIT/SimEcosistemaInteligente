@@ -92,4 +92,5 @@ public class Organismos {
         public void setEsDepredador(boolean esDepredador) {
             this.esDepredador = esDepredador;
     }
+
 }
