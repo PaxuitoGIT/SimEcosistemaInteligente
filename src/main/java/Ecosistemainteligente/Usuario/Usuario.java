@@ -21,4 +21,8 @@ public class Usuario {
         // Comprueba si el nombre de usuario y la contraseña ingresados coinciden con los almacenados
         return this.nombreUsuario.equals(nombreUsuario) && this.contrasena.equals(contrasena);
     }
+
+    public boolean autenticar(String contrasena) {
+        return this.contrasena.equals(contrasena);
+    }
 }

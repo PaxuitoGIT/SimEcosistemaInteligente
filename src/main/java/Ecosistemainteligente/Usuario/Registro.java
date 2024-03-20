@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Registro {
     private List<String> registros;
@@ -16,6 +18,11 @@ public class Registro {
     public void agregarRegistro(String registro) {
         registros.add(registro);
         escribirRegistro(registro);
+    }
+
+    public void agregarResultado(String resultado) {
+        registros.add(resultado);
+        escribirRegistro(resultado);
     }
 
     public List<String> obtenerRegistros() {
@@ -36,9 +43,14 @@ public class Registro {
                 logFile.createNewFile();
             }
 
+            // Obtener la fecha y hora actual
+            LocalDateTime fechaHora = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            String fechaHoraFormateada = fechaHora.format(formatter);
+
             // Escribir el registro en el archivo de log
             FileWriter writer = new FileWriter(logFile, true); // true para append
-            writer.write(registro + "\n");
+            writer.write(fechaHora + " - " + registro + "\n");
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
