@@ -77,4 +77,19 @@ public class Animal extends Organismos {
                 break;
         }
     }
+
+    @Override
+    public  String toString() {
+        return "Animal{" +
+                "posicionX=" + posicionX +
+                ", posicionY=" + posicionY +
+                ", edad=" + edad +
+                ", salud=" + salud +
+                ", esReproductivo=" + esReproductivo +
+                ", nombre='" + nombre + '\'' +
+                ", estaVivo=" + estaVivo +
+                ", esDepredador=" + esDepredador +
+                ", poblacion=" + poblacion +
+                '}';
+    }
 }

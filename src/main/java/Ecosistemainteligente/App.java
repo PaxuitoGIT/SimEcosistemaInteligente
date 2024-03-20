@@ -1,6 +1,8 @@
 package Ecosistemainteligente;
 
 import Ecosistemainteligente.AnalisisAvanzado.AlgoritmoGenetico;
+import Ecosistemainteligente.AnalisisAvanzado.Modelo;
+import Ecosistemainteligente.AnalisisAvanzado.ModeloPersonalizado;
 import Ecosistemainteligente.ModeladoIdentidades.Ambiente;
 import Ecosistemainteligente.ModeladoIdentidades.Animal;
 import Ecosistemainteligente.ModeladoIdentidades.Organismos;
@@ -14,6 +16,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class App {
+    private static final List<ModeloPersonalizado> modelosPersonalizados = new ArrayList<>();
     public static void main( String[] args ) {
         GestorUsuario gestorUsuario = new GestorUsuario();
 
@@ -56,7 +59,8 @@ public class App {
             System.out.println("2. Simular competencia por recursos");
             System.out.println("3. Simular eventos");
             System.out.println("4. Optimizar ambiente");
-            System.out.println("5. Salir");
+            System.out.println("5. Crear modelo personalizado");
+            System.out.println("6. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
 
@@ -170,6 +174,24 @@ public class App {
                     registro.agregarRegistro("El usuario " + nombreUsuario + " ha optimizado el ambiente");
                     break;
                 case 5:
+                    // Crear una instancia de tu modelo personalizado
+                    ModeloPersonalizado miModelo = new Modelo();
+
+                    // Agregar tu modelo personalizado a la lista de modelos personalizados
+                    agregarModeloPersonalizado(miModelo);
+
+                    // Ejecutar los modelos personalizados
+                    for (ModeloPersonalizado modelo : modelosPersonalizados) {
+                        modelo.ejecutar(ambiente);
+                    }
+
+                    System.out.println("Saliendo del programa...");
+                    registro.agregarRegistro("El usuario " + nombreUsuario + " ha salido del programa");
+                    break;
+                case 6:
+                    System.out.println(carnivoro.toString());
+                    System.out.println(herbivoro.toString());
+                case 7:
                     System.out.println("Saliendo del programa...");
                     registro.agregarRegistro("El usuario " + nombreUsuario + " ha salido del programa");
                     break;
@@ -182,5 +204,9 @@ public class App {
         System.out.println("Se ha creado un registro en la carpeta logs");
 
         scanner.close();
+    }
+
+    private static void agregarModeloPersonalizado(ModeloPersonalizado miModelo) {
+        modelosPersonalizados.add(miModelo);
     }
 }
